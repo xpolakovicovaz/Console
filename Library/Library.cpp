@@ -1,6 +1,6 @@
 // Library.cpp : Defines the exported functions for the DLL application.
 //
-
+#include <iostream>
 #include "stdafx.h"
 #include "Library.h"
 //#include <windows.h>
@@ -23,3 +23,16 @@
 //{
 //    return;
 //}
+
+LIBRARY_API std::string menvelkost(std::istream &stream)
+{
+
+		std::string line, output;
+		/*while (std::getline(stream, line))
+		{
+		for ()
+		}*/
+		return "TESTOVACI STRING";
+
+
+}

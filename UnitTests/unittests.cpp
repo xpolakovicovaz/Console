@@ -60,5 +60,17 @@ namespace UnitTests
 			Assert::IsTrue(getopt((int)argv.size(), &argv[0], opts) == EOF, L"last option");
 			Assert::IsTrue(optind == 5, L"first param index");
 		}
+
+		TEST_METHOD(Test_X)
+		{
+			optarg = nullptr;
+			optind = 0;
+			std::stringstream buffer("toTO JE RetazeC");
+			std::string text = menvelkost(buffer);
+			std::vector<char *> argv = { "appName", "-db", "param B", "-e", "param E", "param 1", "param 2" };
+			char * opts = "ab:cde:";
+
+			Assert::IsTrue(getopt((int)argv.size(), &argv[0], opts) == 'l' && text == "toto je retazec");
+		}
 	};
 }

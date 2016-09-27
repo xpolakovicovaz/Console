@@ -81,6 +81,7 @@ int scitaj(int argc, char **argv, int oz, int zz)
 
 int pocitaj(int *suma, int argc, char **argv)
 {
+	int *priklad = new int[argc];
 	bool cibz;
 	int oz;
 	int zz;
@@ -112,11 +113,37 @@ int pocitaj(int *suma, int argc, char **argv)
 	return 0;
 }
 
+int kalkulacka(int argc, char **argv)
+{
+	int c; int suma;
+	if (kontrola(argc, argv)) {
+		c = pocitaj(&suma, argc, argv);
+		if (c == 0)
+		{
+			std::wcout << suma << std::endl; return 0;
+		}
+		else
+			std::wcout << "chyba" << std::endl;
+	}
+	else std::wcout << "chyba" << std::endl;
+	return -1;
+}
+std::string menvelkost(std::istream &stream) 
+{
+	std::string line, output;
+	/*while (std::getline(stream, line)) 
+	{
+		for ()
+	}*/
+	return "TESTOVACI STRING";
+
+}
+
 int main(int argc, char **argv)
 {
 	int c;
 	int suma;
-
+	std::istream *stream;
 	if (argc == 1)
 	{
 		return 0;
@@ -130,19 +157,17 @@ int main(int argc, char **argv)
 			case 'h':
 				DisplayUsage(argv[0]);
 				break;
+			case 'f':
+				
+				break;
 			default:
 				std::wcout << "Neznamy parameter '" << (char)c << "'" << std::endl;
 				DisplayUsage(argv[0]);
 			}
 		}
-		if (kontrola(argc, argv)) {
-			c = pocitaj(&suma, argc, argv);
-			if (c == 0)
-				std::wcout << suma << std::endl;
-			else
-				std::wcout << "chyba" << std::endl;
-		}
-		else std::wcout << "chyba" << std::endl;
+		menvelkost(*stream);
+		kalkulacka(argc, argv);
+
 	}
 	return 0;
 }
