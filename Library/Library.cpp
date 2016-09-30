@@ -1,12 +1,13 @@
 // Library.cpp : Defines the exported functions for the DLL application.
 //
-#include <iostream>
+
 #include "stdafx.h"
 #include "Library.h"
 //#include <windows.h>
 //#include <stdio.h>
 //#include <tchar.h>
-
+#include <locale>
+#include <string>
 
 //// This is an example of an exported variable
 //LIBRARY_API int nLibrary=0;
@@ -24,15 +25,27 @@
 //    return;
 //}
 
-LIBRARY_API std::string menvelkost(std::istream &stream)
+LIBRARY_API std::string shift(std::istream& vstup, char ch)
 {
-
-		std::string line, output;
-		/*while (std::getline(stream, line))
+	std::string s = "";
+	char q = '.';
+	std::locale loc;
+	if (ch == 'l')
+	{
+		while (!vstup.eof())
 		{
-		for ()
-		}*/
-		return "TESTOVACI STRING";
-
-
+			q = tolower(vstup.get(), loc);
+			s += q;
+		}
+	}
+	if (ch == 'u')
+	{
+		while (!vstup.eof())
+		{
+			q = toupper(vstup.get(), loc);
+			s += q;
+		}
+	}
+	s.pop_back();
+	return s;
 }
