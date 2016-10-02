@@ -12,6 +12,7 @@
 
 extern LIBRARY_API int optind;
 extern LIBRARY_API char *optarg;
+#include<string>
 
 LIBRARY_API int getopt(int argc, char *argv[], char *optstring);
-LIBRARY_API std::string menvelkost(std::istream &stream);
+LIBRARY_API int calc(std::istream& stream);
